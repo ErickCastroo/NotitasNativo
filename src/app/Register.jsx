@@ -22,7 +22,7 @@ export default function Registro() {
         <View
           style={tw`w-full h-5/6 md:w-1/2 relative flex flex-col justify-center items-center bg-zinc-100 dark:bg-zinc-900`}
         >
-          <View style={tw`absolute right-0 top-0`}>
+          <View style={tw`absolute left-0 top-0`}>
             <Link href="/Login" asChild>
               <TouchableOpacity
                 style={tw`flex justify-end self-end m-2 mr-4 hover:underline hover:underline-offset-2`}
