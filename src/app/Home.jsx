@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Dimensions, TouchableOpacity } from "react-native";
-import MasonryList from "react-native-masonry-list";
+import MasonryList from "@react-native-seoul/masonry-list"; // Importa la nueva biblioteca
 import { useTranslation } from "react-i18next";
 import { I18nextProvider } from "react-i18next";
 import i18next from "../config/lang/services/i18next";
@@ -48,7 +48,13 @@ export default function Home() {
     };
   }, []);
 
-  const filteredNotas = notas.filter((notita) => notita.titulo && notita.nota && notita.dimensions);
+  const filteredNotas = notas.filter(
+    (notita) => notita.titulo && notita.nota && notita.dimensions
+  );
+
+  const handlePress = (id) => {
+    console.log("Nota presionada", id);
+  };
 
   return (
     <I18nextProvider i18n={i18next}>
@@ -61,20 +67,24 @@ export default function Home() {
           </View>
           <View style={tw`w-full h-full`}>
             <MasonryList
-              images={filteredNotas.map((notita) => ({
-                dimensions: notita.dimensions,
-                id: notita.id,
-                titulo: notita.titulo,
-                nota: notita.nota,
-                color: notita.color,
-                onClick: () => {
-                  console.log(`Clicked on ${notita.titulo}`);
-                },
-              }))}
-              style={tw`w-full max-h-96 border-2 `}
-              columns={columns}
-              spacing={0.5}
-              emptyView={<Text>No hay notas disponibles</Text>}
+              data={filteredNotas} // Cambia 'images' a 'data'
+              numColumns={columns} // Cambia 'columns' a 'numColumns'
+              renderItem={({ item: data }) => (
+                <TouchableOpacity
+                  key={data.id}
+                  onPress={() => handlePress(data.id)}
+                  style={[
+                    tw`w-full border-2 rounded p-2 overflow-hidden`,
+                    {
+                      borderColor: data.color || "zinc-900",
+                      height: data.dimensions.height,
+                    },
+                  ]}
+                >
+                  <Text style={tw`text-xl`}>{data.titulo}</Text>
+                  <Text>{data.nota}</Text>
+                </TouchableOpacity>
+              )}
             />
           </View>
         </View>
@@ -82,21 +92,3 @@ export default function Home() {
     </I18nextProvider>
   );
 }
-
-
-// renderIndividualHeader={(data) => (
-//   <TouchableOpacity
-//     key={data.id}
-//     onPress={data.onClick}
-//     style={[
-//       tw`w-full border-2 rounded p-2 box-border overflow-hidden`,
-//       {
-//         borderColor: data.color || "zinc-900",
-//         height: data.dimensions.height,
-//       },
-//     ]}
-//   >
-//     <Text style={tw`text-xl`}>{data.titulo}</Text>
-//     <Text>{data.nota}</Text>
-//   </TouchableOpacity>
-// )}
