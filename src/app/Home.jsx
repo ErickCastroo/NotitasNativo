@@ -3,7 +3,7 @@ import { View, Text, Dimensions } from "react-native";
 import MasonryList from "react-native-masonry-list";
 import { useTranslation } from "react-i18next";
 import { I18nextProvider } from 'react-i18next';
-import i18next from '../../../services/i18next';
+import i18next from '../config/lang/services/i18next';
 import tw from "twrnc";
 
 const images = [

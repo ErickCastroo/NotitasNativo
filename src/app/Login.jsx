@@ -4,7 +4,7 @@ import tw from "twrnc";
 
 import { useTranslation } from "react-i18next";
 
-export default function login() {
+export default function Login() {
 
   const { t } = useTranslation();
 
@@ -20,7 +20,7 @@ export default function login() {
       <View style={tw`w-10/12 h-full flex items-center justify-center`}>
         {/* Caja #1 */}
         <View
-          style={tw`hidden bg-zinc-100 dark:bg-zinc-950 w-1/2 h-5/6 md:flex items-center justify-center login-shadow`}
+          style={tw`hidden bg-zinc-100 dark:bg-zinc-950 w-1/2 h-5/6 md:flex items-center justify-center`}
         >
           <Image style={tw`w-72 h-72`} />
         </View>
@@ -38,6 +38,18 @@ export default function login() {
               </TouchableOpacity>
             </Link>
           </View>
+
+          <View style={tw`absolute left-0 top-0`}>
+            <Link href="/Home" asChild>
+              <TouchableOpacity
+                style={tw`flex justify-start self-start m-2 mr-4 hover:underline hover:underline-offset-2`}
+              >
+                <Text>{t('home')}</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
+
+
           <View
             style={tw`h-full w-10/12 sm:w-8/12 md:w-9/12 lg:w-7/12 xl:w-6/12 flex flex-col items-center justify-center`}
           >
