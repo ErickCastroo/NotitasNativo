@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { I18nextProvider } from "react-i18next";
 import i18next from "../config/lang/services/i18next";
 import tw from "twrnc";
-
+import { AddIcon } from "../components/Icons";
 // Simula datos obtenidos de una API (reemplaza con tus datos reales)
 const notas = [
   {
@@ -188,37 +188,51 @@ export default function Home() {
   const handlePress = (id) => {
     console.log("Nota presionada", id);
   };
-
   return (
     <I18nextProvider i18n={i18next}>
-      <View>
-        <View style={tw`flex mb-4 sm:mb-0`}>
+      <View style={tw`flex-1 p-4`}>
+        <View
+          style={tw`flex-row items-center justify-between mb-6`}
+        >
           <View
-            style={tw`text-2xl p-8 sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}
+            style={tw`flex-row items-center bg-white dark:bg-black p-1 rounded`}
           >
-            <Text>{t("title_notitas")}</Text>
+            <Text
+              style={tw`text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}
+            >
+              {t("title_notitas")}
+            </Text>
+            <TouchableOpacity
+              style={tw`p-1 rounded bg-white dark:bg-black`}
+              onPress={() => {
+                console.log("Agregar nota");
+              }}
+            >
+              <AddIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
+            </TouchableOpacity>
           </View>
-          <View style={tw`w-full h-full`}>
-            <MasonryList
-              data={notas} // Utiliza los datos obtenidos de la API
-              numColumns={columns}
-              renderItem={({ item: data }) => (
-                <TouchableOpacity
-                  key={data.id}
-                  onPress={() => handlePress(data.id)}
-                  style={[
-                    tw`w-full border-2 rounded p-2 overflow-hidden`,
-                    {
-                      borderColor: data.color || "zinc-900",
-                    },
-                  ]}
-                >
-                  <Text style={tw`text-xl`}>{data.titulo}</Text>
-                  <Text>{data.nota}</Text>
-                </TouchableOpacity>
-              )}
-            />
-          </View>
+        </View>
+
+        <View style={tw`flex-1`}>
+          <MasonryList
+            data={notas} // Utiliza los datos obtenidos de la API
+            numColumns={columns}
+            renderItem={({ item: data }) => (
+              <TouchableOpacity
+                key={data.id}
+                onPress={() => handlePress(data.id)}
+                style={[
+                  tw`w-full border-2 rounded p-2 overflow-hidden mb-2`,
+                  {
+                    borderColor: data.color || "zinc-900",
+                  },
+                ]}
+              >
+                <Text style={tw`text-xl`}>{data.titulo}</Text>
+                <Text>{data.nota}</Text>
+              </TouchableOpacity>
+            )}
+          />
         </View>
       </View>
     </I18nextProvider>
