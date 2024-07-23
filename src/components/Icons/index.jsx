@@ -18,3 +18,8 @@ export const AddIcon = (props) => (
   <AntDesign name="plus" size={32} color="black" {...props} />
 );
 
+export const FilterIcon = (props) => (
+  <AntDesign name="filter" size={32} color="black" {...props} />
+);
+
+

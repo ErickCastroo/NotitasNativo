@@ -5,8 +5,7 @@ import { useTranslation } from "react-i18next";
 import { I18nextProvider } from "react-i18next";
 import i18next from "../config/lang/services/i18next";
 import tw from "twrnc";
-import { AddIcon } from "../components/Icons";
-// Simula datos obtenidos de una API (reemplaza con tus datos reales)
+import { AddIcon, FilterIcon } from "../components/Icons";
 const notas = [
   {
     id: 1,
@@ -203,7 +202,7 @@ export default function Home() {
               {t("title_notitas")}
             </Text>
             <TouchableOpacity
-              style={tw`p-1 rounded bg-white dark:bg-black`}
+              style={tw` rounded bg-zinc-100 dark:bg-black`}
               onPress={() => {
                 console.log("Agregar nota");
               }}
@@ -211,6 +210,14 @@ export default function Home() {
               <AddIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
             </TouchableOpacity>
           </View>
+          <TouchableOpacity
+              style={tw`items-end rounded bg-zinc-100 dark:bg-black`}
+              onPress={() => {
+                console.log("filtro nota");
+              }}
+            >
+              <FilterIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
+            </TouchableOpacity>
         </View>
 
         <View style={tw`flex-1`}>
@@ -222,7 +229,7 @@ export default function Home() {
                 key={data.id}
                 onPress={() => handlePress(data.id)}
                 style={[
-                  tw`w-full border-2 rounded p-2 overflow-hidden mb-2`,
+                  tw`w-full max-h-96 border-2 rounded p-2 overflow-hidden mb-2`,
                   {
                     borderColor: data.color || "zinc-900",
                   },
