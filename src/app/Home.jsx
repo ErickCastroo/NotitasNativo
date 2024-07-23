@@ -4,6 +4,7 @@ import MasonryList from "@react-native-seoul/masonry-list"; // Importa la nueva 
 import { useTranslation } from "react-i18next";
 import { I18nextProvider } from "react-i18next";
 import i18next from "../config/lang/services/i18next";
+import Modals from "../components/Modal";
 import tw from "twrnc";
 import { AddIcon, FilterIcon } from "../components/Icons";
 const notas = [
@@ -201,14 +202,7 @@ export default function Home() {
             >
               {t("title_notitas")}
             </Text>
-            <TouchableOpacity
-              style={tw` rounded bg-zinc-100 dark:bg-black`}
-              onPress={() => {
-                console.log("Agregar nota");
-              }}
-            >
-              <AddIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
-            </TouchableOpacity>
+            <Modals />
           </View>
           <TouchableOpacity
               style={tw`items-end rounded bg-zinc-100 dark:bg-black`}
