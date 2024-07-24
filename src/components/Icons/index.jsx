@@ -22,4 +22,8 @@ export const FilterIcon = (props) => (
   <AntDesign name="filter" size={32} color="black" {...props} />
 );
 
+export const CloseIcon = (props) => (
+  <AntDesign name="close" size={32} color="black" {...props} />
+);
+
 

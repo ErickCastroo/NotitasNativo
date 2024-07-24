@@ -1,42 +1,25 @@
 import React, { useRef } from "react";
-import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
+import { SafeAreaView, StatusBar, View } from "react-native";
 import QuillEditor, { QuillToolbar } from "react-native-cn-quill";
 import tw from "twrnc";
 
-const EditorText = () => {
+const EditorText = ({ initialContent, onHtmlChange }) => {
   const _editor = useRef();
+
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={tw`flex-1 bg-[#eaeaea]`}>
       <StatusBar style="auto" />
-      <View style={styles.toolbarContainer}>
+      <View style={tw`border-b border-gray-400 bg-white`}>
         <QuillToolbar editor={_editor} options="full" theme="light" />
       </View>
       <QuillEditor
-        style={styles.editor}
+        style={tw`flex-1 p-2 border border-gray-400 bg-white`}
         ref={_editor}
-        initialHtml="<h1>Quill Editor for react-native</h1>"
+        initialHtml={initialContent}
+        onEditorChange={(html) => onHtmlChange(html)}
       />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: "#eaeaea",
-  },
-  toolbarContainer: {
-    borderBottomWidth: 1,
-    borderColor: "gray",
-    backgroundColor: "#fff",
-  },
-  editor: {
-    flex: 1,
-    padding: 10,
-    borderColor: "gray",
-    borderWidth: 1,
-    backgroundColor: "white",
-  },
-});
 
 export default EditorText;

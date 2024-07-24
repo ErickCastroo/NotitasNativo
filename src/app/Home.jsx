@@ -169,9 +169,11 @@ const getColumnsCount = (width) => {
 
 export default function Home() {
   const { t } = useTranslation();
-  const [columns, setColumns] = useState(
-    getColumnsCount(Dimensions.get("window").width)
-  );
+  const [columns, setColumns] = useState(getColumnsCount(Dimensions.get("window").width));
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [noteTitle, setNoteTitle] = useState("");
+  const [noteContent, setNoteContent] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -185,43 +187,56 @@ export default function Home() {
     };
   }, []);
 
-  const handlePress = (id) => {
-    console.log("Nota presionada", id);
+  const handlePress = (note) => {
+    setSelectedNote(note);
+    setNoteTitle(note.titulo);
+    setNoteContent(note.nota);
+    setModalVisible(true);
   };
+
+  const handleCloseModal = () => {
+    console.log(`Title: ${noteTitle}`);
+    console.log(`Content: ${noteContent}`);
+    setModalVisible(false);
+  };
+
   return (
     <I18nextProvider i18n={i18next}>
       <View style={tw`flex-1 p-4`}>
-        <View
-          style={tw`flex-row items-center justify-between mb-6`}
-        >
-          <View
-            style={tw`flex-row items-center bg-white dark:bg-black p-1 rounded`}
-          >
-            <Text
-              style={tw`text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}
-            >
+        <View style={tw`flex-row items-center justify-between mb-6`}>
+          <View style={tw`flex-row items-center bg-white dark:bg-black p-1 rounded`}>
+            <Text style={tw`text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}>
               {t("title_notitas")}
             </Text>
-            <Modals />
-          </View>
-          <TouchableOpacity
-              style={tw`items-end rounded bg-zinc-100 dark:bg-black`}
+            <TouchableOpacity
+              style={tw`rounded bg-zinc-100 dark:bg-black p-2`}
               onPress={() => {
-                console.log("filtro nota");
+                setNoteTitle("");
+                setNoteContent("");
+                setModalVisible(true);
               }}
             >
-              <FilterIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
+              <AddIcon style={tw`text-zinc-900 dark:text-zinc-100`} />
             </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            style={tw`items-end rounded bg-zinc-100 dark:bg-black`}
+            onPress={() => {
+              console.log("filtro nota");
+            }}
+          >
+            <FilterIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
+          </TouchableOpacity>
         </View>
 
         <View style={tw`flex-1`}>
           <MasonryList
-            data={notas} // Utiliza los datos obtenidos de la API
+            data={notas}
             numColumns={columns}
             renderItem={({ item: data }) => (
               <TouchableOpacity
                 key={data.id}
-                onPress={() => handlePress(data.id)}
+                onPress={() => handlePress(data)}
                 style={[
                   tw`w-full max-h-96 border-2 rounded p-2 overflow-hidden mb-2`,
                   {
@@ -235,6 +250,17 @@ export default function Home() {
             )}
           />
         </View>
+
+        {modalVisible && (
+          <Modals
+            visible={modalVisible}
+            onClose={handleCloseModal}
+            title={noteTitle}
+            content={noteContent}
+            setTitle={setNoteTitle}
+            setContent={setNoteContent}
+          />
+        )}
       </View>
     </I18nextProvider>
   );
