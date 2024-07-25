@@ -15,7 +15,7 @@ export const InfoIcon = (props) => (
 );
 
 export const AddIcon = (props) => (
-  <AntDesign name="plus" size={32} color="black" {...props} />
+  <AntDesign name="plus" size={28} color="black" {...props} />
 );
 
 export const FilterIcon = (props) => (

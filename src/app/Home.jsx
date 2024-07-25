@@ -17,31 +17,31 @@ const notas = [
   {
     id: 2,
     titulo: "Nota 2",
-    nota: "Contenido de la nota 2Contenido de la nota 2Contenido de la nota 2Contenido de la nota 2Contenido de la nota 2",
+    nota: "Contenido de la nota 2Contenido 2Contenido vv v 2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido2Contenido de la nota 2Contenido de la nota 2Contenido de la nota 2Contenido de la nota 2",
     color: "#ff0000",
   },
   {
     id: 3,
     titulo: "Nota 3",
-    nota: "Contenido de la nota 3. Más detalles sobre el contenido de esta nota para que sea más extensa.",
+    nota: "Contenido de la nota 3. Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de Más detalles sobre el contenido de esta nota para que sea más extensa.",
     color: "#0000ff",
   },
   {
     id: 4,
     titulo: "Nota 4",
-    nota: "Contenido de la nota 4. Un texto extenso para demostrar la variación en el contenido de esta nota.",
+    nota: "Contenido de la nota 4.",
     color: "#ffff00",
   },
   {
     id: 5,
     titulo: "Nota 5",
-    nota: "Contenido de la nota 5. Aquí tienes una descripción detallada y extensa para esta nota en particular.",
+    nota: "Contenido de la nota 5. Aquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detalladaAquí tienes una descripción detallada y extensa para esta nota en particular.",
     color: "#ff00ff",
   },
   {
     id: 6,
     titulo: "Nota 6",
-    nota: "Contenido de la nota 6. Un texto más largo para demostrar cómo se verá en la aplicación.",
+    nota: "Contenido de la nota 6. Un texto más largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largommás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largoás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largomás largo para demostrar cómo se verá en la aplicación.",
     color: "#00ffff",
   },
   {
@@ -98,66 +98,6 @@ const notas = [
     nota: "Contenido de la nota 15. Un texto extendido para comprobar cómo se adapta a diferentes espacios.",
     color: "#ffff00",
   },
-  {
-    id: 16,
-    titulo: "Nota 16",
-    nota: "Contenido de la nota 16. Otra descripción extensa para ver la variación en el diseño.",
-    color: "#ff00ff",
-  },
-  {
-    id: 17,
-    titulo: "Nota 17",
-    nota: "Contenido de la nota 17. Ejemplo de una nota con mucho contenido para evaluar el formato.",
-    color: "#00ffff",
-  },
-  {
-    id: 18,
-    titulo: "Nota 18",
-    nota: "Contenido de la nota 18. Descripción larga que ayuda a llenar el espacio de manera óptima.",
-    color: "#ff7f00",
-  },
-  {
-    id: 19,
-    titulo: "Nota 19",
-    nota: "Contenido de la nota 19. Contenido extenso que se visualiza en el diseño de la aplicación.",
-    color: "#7f00ff",
-  },
-  {
-    id: 20,
-    titulo: "Nota 20",
-    nota: "Contenido de la nota 20. Un texto variado y largo para mostrar el ajuste en la visualización.",
-    color: "#00ff7f",
-  },
-  {
-    id: 21,
-    titulo: "Nota 21",
-    nota: "Contenido de la nota 21. Ejemplo de un contenido detallado para observar cómo se ajusta.",
-    color: "#ff007f",
-  },
-  {
-    id: 22,
-    titulo: "Nota 22",
-    nota: "Contenido de la nota 22. Otro texto largo para verificar la visualización en diferentes tamaños.",
-    color: "#7f7f00",
-  },
-  {
-    id: 23,
-    titulo: "Nota 23",
-    nota: "Contenido de la nota 23. Descripción extendida para comprobar el formato en el diseño.",
-    color: "#00ff00",
-  },
-  {
-    id: 24,
-    titulo: "Nota 24",
-    nota: "Contenido de la nota 24. Texto largo para observar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layout.",
-    color: "#ff0000",
-  },
-  {
-    id: 25,
-    titulo: "Nota 25",
-    nota: "Contenido de la nota 25. Un ejemplo con contenido extenso para ver la adaptación en el diseño.observar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layoutobservar cómo se presenta en el layout",
-    color: "#0000ff",
-  },
 ];
 
 const getColumnsCount = (width) => {
@@ -169,7 +109,9 @@ const getColumnsCount = (width) => {
 
 export default function Home() {
   const { t } = useTranslation();
-  const [columns, setColumns] = useState(getColumnsCount(Dimensions.get("window").width));
+  const [columns, setColumns] = useState(
+    getColumnsCount(Dimensions.get("window").width)
+  );
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedNote, setSelectedNote] = useState(null);
   const [noteTitle, setNoteTitle] = useState("");
@@ -204,8 +146,12 @@ export default function Home() {
     <I18nextProvider i18n={i18next}>
       <View style={tw`flex-1 p-4`}>
         <View style={tw`flex-row items-center justify-between mb-6`}>
-          <View style={tw`flex-row items-center bg-white dark:bg-black p-1 rounded`}>
-            <Text style={tw`text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}>
+          <View
+            style={tw`flex-row items-center bg-white dark:bg-black p-1 rounded`}
+          >
+            <Text
+              style={tw`text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-100 font-bold mr-3`}
+            >
               {t("title_notitas")}
             </Text>
             <TouchableOpacity
@@ -227,6 +173,15 @@ export default function Home() {
           >
             <FilterIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
           </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={tw`items-end absolute right-10 rounded bg-zinc-100 dark:bg-black`}
+            onPress={() => {
+              console.log("filtro nota");
+            }}
+          >
+            <FilterIcon style={tw`text-xl text-zinc-900 dark:text-zinc-100`} />
+          </TouchableOpacity>
         </View>
 
         <View style={tw`flex-1`}>
@@ -238,9 +193,10 @@ export default function Home() {
                 key={data.id}
                 onPress={() => handlePress(data)}
                 style={[
-                  tw`w-full max-h-96 border-2 rounded p-2 overflow-hidden mb-2`,
+                  tw`max-h-96 border-2 rounded p-2 overflow-hidden mb-2`,
                   {
                     borderColor: data.color || "zinc-900",
+                    margin: 5,
                   },
                 ]}
               >
