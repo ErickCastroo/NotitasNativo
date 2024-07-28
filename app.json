@@ -18,12 +18,22 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "supportsTablet": true,
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://localhost"
+        }
+      ]
+    ],
+    "extra": {
+      "origin": "https://localhost"
     }
   }
 }

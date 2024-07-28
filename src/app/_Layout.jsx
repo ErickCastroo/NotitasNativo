@@ -1,11 +1,11 @@
-import { View, Text } from "react-native";
+import React from 'react';
 import { Slot } from 'expo-router';
+import { AuthProvider } from '../context/AuthContext';
 
 export default function Layout() {
   return (
-    <View>
-      <Slot />;
-    </View>
+    <AuthProvider>
+      <Slot />
+    </AuthProvider>
   );
 }
-
