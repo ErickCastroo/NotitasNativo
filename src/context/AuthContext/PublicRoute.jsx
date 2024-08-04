@@ -1,19 +1,16 @@
-import { Navigate } from 'react-router-dom'
-import { useAuth } from './useAuth'
+import { useAuth } from "./useAuth";
+import { router } from "expo-router";
+import { Text } from "react-native-web";
 
 function PublicRoute({ children }) {
-  const auth = useAuth()
-
-  if (!auth.usuarioVerificado) {
-    // Esperar hasta que el usuario haya sido verificado antes de tomar una decisión
-    return null // o algún indicador de carga si es necesario
-  }
+  const auth = useAuth();
 
   if (auth.usuario) {
-    return <Navigate to='/' />
+    router.push("/Home");
+    return null;
   }
 
-  return children
+  return children;
 }
 
-export { PublicRoute }
+export { PublicRoute };

@@ -28,8 +28,6 @@ export default function Login() {
 
 
   const onSubmit = async (data) => {
-    console.log(data);
-    console.log(auth);
     await auth.login(data.correo, data.password);
   };
 
