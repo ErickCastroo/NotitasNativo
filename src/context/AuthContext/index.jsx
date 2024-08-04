@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwtDecode from 'jwt-decode';
-import { crearUsuarioByTokenResponse, fetchData } from '../../lib/utils';
+import { crearUsuarioByTokenResponse, fetchData, guardarUsuarioEnStorage, obtenerUsuarioDesdeStorage } from '../../lib/utils';
 
 const AuthContext = createContext();
 
@@ -12,31 +12,6 @@ function AuthProvider({ children }) {
   const [usuarioVerificado, setUsuarioVerificado] = useState(false);
   const { t } = useTranslation();
   const router = useRouter();
-
-  useEffect(() => {
-    const obtenerUsuarioDesdeStorage = async () => {
-      try {
-        const usuarioCookie = await AsyncStorage.getItem('usuario');
-        if (usuarioCookie) {
-          setUsuario(JSON.parse(usuarioCookie));
-        }
-        setUsuarioVerificado(true);
-      } catch (error) {
-        console.error('Error al obtener usuario desde el local storage:', error);
-        router.push('/');
-      }
-    };
-
-    obtenerUsuarioDesdeStorage();
-  }, []);
-
-  const guardarUsuarioEnStorage = async (usuario) => {
-    try {
-      await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
-    } catch (error) {
-      console.error('Error al guardar usuario en el local storage:', error);
-    }
-  };
 
   const login = async (correo, password) => {
     try {
@@ -52,9 +27,9 @@ function AuthProvider({ children }) {
       });
 
       const usuario = crearUsuarioByTokenResponse(response);
-      guardarUsuarioEnStorage(usuario);
+      await guardarUsuarioEnStorage(usuario);
       setUsuario(usuario);
-      router.push('/');
+      router.push('/Home');
     } catch (error) {
       console.error('Error en el login:', error);
     }
@@ -75,9 +50,9 @@ function AuthProvider({ children }) {
       });
 
       const usuario = crearUsuarioByTokenResponse(response);
-      guardarUsuarioEnStorage(usuario);
+      await guardarUsuarioEnStorage(usuario);
       setUsuario(usuario);
-      router.push('/');
+      router.push('/Home');
     } catch (error) {
       console.error('Error en el registro:', error);
     }
@@ -94,7 +69,7 @@ function AuthProvider({ children }) {
 
       await AsyncStorage.removeItem('usuario');
       setUsuario(null);
-      router.push('/landing');
+      router.push('/');
     } catch (error) {
       console.error('Error en el logout:', error);
     }

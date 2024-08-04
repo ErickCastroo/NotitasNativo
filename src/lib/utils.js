@@ -1,11 +1,8 @@
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+
 import { jwtDecode } from 'jwt-decode'
 import { back_url } from '../config/const'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export function cn(...inputs) {
-  return twMerge(clsx(inputs))
-}
 
 export const crearUsuarioByTokenResponse = respuesta => {
   let tokenDecoded = jwtDecode(respuesta.token)
@@ -21,13 +18,13 @@ export const crearUsuarioByTokenResponse = respuesta => {
   return usuario
 }
 
-export const obtenerUsuarioDesdeStorage = () => {
-  const usuario = localStorage.getItem('usuario')
+export const obtenerUsuarioDesdeStorage = async () => {
+  const usuario = await AsyncStorage.getItem('usuario')
   return usuario ? JSON.parse(usuario) : null
 }
 
-export const guardarUsuarioEnStorage = (usuario) => {
-  localStorage.setItem('usuario', JSON.stringify(usuario))
+export const guardarUsuarioEnStorage = async(usuario) => {
+  await AsyncStorage.setItem('usuario', JSON.stringify(usuario))
 }
 
 export const primeraMayuscula = (string) => {
@@ -44,6 +41,7 @@ export const fetchData = async ({
   setUsuario
 }) => {
   try {
+    console.log(`${back_url}${url}`)
     const response = await fetch(`${back_url}${url}`, {
       method: method,
       headers: headers,
@@ -72,7 +70,7 @@ export const fetchData = async ({
 
         // Guardar el nuevo token en local storage
         const usuario = crearUsuarioByTokenResponse(refreshData)
-        guardarUsuarioEnStorage(usuario)
+        await guardarUsuarioEnStorage(usuario)
         setUsuario(usuario)
 
         // Guardar el nuevo token en los encabezados

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import tw from 'twrnc';
@@ -6,12 +5,13 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '../context/AuthContext/useAuth';
+
 
 export default function Login() {
   const { t } = useTranslation();
   const router = useRouter();
-  const [usuario, setUsuario] = useState(null);
+  const auth = useAuth();
 
   const formSchema = z.object({
     correo: z.string().email({ message: t('email_validation') }),
@@ -26,38 +26,11 @@ export default function Login() {
     },
   });
 
-  const login = async (correo, password) => {
-    try {
-      const response = await fetch('/notitas_auth/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          correo,
-          password,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-  
-      const data = await response.json();
-      console.log('Response data:', data); // Verifica la respuesta de la API
-      const usuarioData = crearUsuarioByTokenResponse(data);
-      await guardarUsuarioEnStorage(usuarioData);
-      setUsuario(usuarioData);
-      console.log('Usuario:', usuarioData);
-      router.push('/Home');
-    } catch (error) {
-      console.error('Error en el login:', error);
-    }
-  };
 
   const onSubmit = async (data) => {
-    await login(data.correo, data.password);
+    console.log(data);
+    console.log(auth);
+    await auth.login(data.correo, data.password);
   };
 
   return (
@@ -156,19 +129,3 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
-
-const crearUsuarioByTokenResponse = (response) => {
-  console.log('Response in crearUsuarioByTokenResponse:', response); // Agregar esta línea para verificar
-  return {
-    token: response.token,
-    nombre: response.nombre,
-  };
-};
-
-const guardarUsuarioEnStorage = async (usuario) => {
-  try {
-    await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
-  } catch (error) {
-    console.error('Error guardando el usuario en el storage:', error);
-  }
-};
