@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 // import { useToast } from '@/components/ui/use-toast'
-import { useAuth } from '@/contexts/AuthContext/useAuth'
+import { useAuth } from '../context/AuthContext/useAuth'
 
-import { fetchData } from '@/lib/utils'
+import { fetchData } from '../lib/utils'
 
 function useFetch({ url, method = 'GET', body = null, headers = { 'Content-Type': 'application/json' } }) {
   const [data, setData] = useState(null)
