@@ -64,7 +64,6 @@ export default function Home() {
     console.log(`Content: ${noteContent}`);
     setModalVisible(false);
   };
-  console.log(notitas);
 
   return (
     <I18nextProvider i18n={i18next}>
